@@ -18,8 +18,8 @@ import React, { useEffect, useState, useTransition } from "react";
 import ButtonLoading from "@/components/shared/simple/ButtonLoading";
 import { EyeIcon, EyeOff, KeyRound, Mail } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { resetPassword } from "@/actions/resetPassword";
 import { useSearchParams } from "next/navigation";
+import { resetPassword } from "@/actions/auth";
 
 const FormSchema = z
   .object({

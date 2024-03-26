@@ -16,8 +16,8 @@ import { Input } from "@/components/ui/input";
 import { useTransition } from "react";
 import ButtonLoading from "@/components/shared/simple/ButtonLoading";
 import { Mail } from "lucide-react";
-import { sendForgetPasswordEmail } from "@/actions/forget-password";
 import { useToast } from "@/components/ui/use-toast";
+import { sendForgetPasswordEmail } from "@/actions/auth";
 
 const FormSchema = z.object({
   email: z
