@@ -1,6 +1,6 @@
 import { Briefcase, FileStack, Crown, Rocket, MousePointerClick, UserRound, SendToBack, LayoutDashboard } from "lucide-react"
 
-export const BACKEND_URL = 'https://nest-flexxijob-production.up.railway.app/'
+export const BACKEND_URL = 'https://nest-flexxijob-production.up.railway.app'
 export const navLinks = [
     {
         name: 'Find Jobs',
