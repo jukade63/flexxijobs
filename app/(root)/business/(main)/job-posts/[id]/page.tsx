@@ -1,5 +1,5 @@
+import { getJobPostByIdByBusiness } from "@/actions/job-post";
 import EditJobPost from "@/app/(root)/business/(main)/post-job/_components/EditJobPost";
-import { getJobPostByIdByBusiness} from "@/lib/util-fns/get-session";
 
 export default async function page({ params }: { params: { id: string } }) {
   let jobPost

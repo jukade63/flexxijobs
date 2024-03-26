@@ -1,6 +1,4 @@
-import { UserButton } from "@/components/shared/UserButton";
-import MobileNav from "@/components/shared/MobileNav";
-import Navbar from "@/components/worker/Navbar";
+
 import Sidebar from "@/components/worker/Sidebar";
 import WorkerMobileNav from "@/components/worker/WorkerMobileNav";
 import { getSession } from "@/lib/util-fns/get-session";

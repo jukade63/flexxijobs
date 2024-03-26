@@ -63,9 +63,9 @@ export default function ApplicationItem({
         <div className="space-y-1 py-2 bg-gray-200 w-full px-2">
           <h3 className="text-md font-semibold">Posted By:</h3>
           <div className="flex gap-4 items-center">
-            <p className="text-sm font-semibold">{business?.user.username}</p>
-            <p className="text-xs ">email : {business?.user.email}</p>
-            <p className="text-xs ">phone : {business?.user.phoneNumber}</p>
+            <p className="text-sm font-semibold">{business?.user?.username}</p>
+            <p className="text-xs ">email : {business?.user?.email}</p>
+            <p className="text-xs ">phone : {business?.user?.phoneNumber}</p>
           </div>
         </div>
         <div className="absolute bottom-2 right-2">

@@ -18,7 +18,7 @@ export default function Hero() {
 
           <p className="mt-4 max-w-lg sm:text-xl/relaxed">
             Say goodbye to recruitment headaches and hello to efficiency. With
-            CasualPro's intuitive interface and advanced search filters, finding
+            Flexxijob intuitive interface and advanced search filters, finding
             your next star employee is simpler than ever.
           </p>
 

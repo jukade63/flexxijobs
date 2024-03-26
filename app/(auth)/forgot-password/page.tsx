@@ -1,5 +1,5 @@
 import Image from "next/image";
-import forgotPassImg from "../../../public/forgot-pass.jpg";
+import forgotPassImg from "../../../public/forget-pass.jpg";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { ForgotPasswordForm } from "./_components/ForgotPassWordForm";

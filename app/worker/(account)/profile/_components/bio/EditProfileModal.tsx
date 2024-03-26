@@ -52,21 +52,12 @@ export default function EditProfileModal() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
-      email: "",
-      phoneNumber: "",
-      imgUrl: "",
+      username: session?.user.username || "",
+      email: session?.user.email || "",
+      phoneNumber: session?.user.phoneNumber || "",
+      imgUrl: session?.user.imgUrl || "",
     },
   });
-
-  useEffect(() => {
-    if (session) {
-      form.setValue("username", session.user.username);
-      form.setValue("email", session.user.email);
-      form.setValue("phoneNumber", session.user.phoneNumber);
-      form.setValue("imgUrl", session.user.imgUrl);
-    }
-  }, [session, form.setValue]);
 
   const isLoading = form.formState.isSubmitting;
 

@@ -11,7 +11,7 @@ export default function JobPostDetail({ jobPost }: { jobPost: JobPost }) {
         <h2 className="font-semibold text-gray-600">Requirements</h2>
         <ul>
           {jobPost.requirements.map((requirement) => (
-            <li className="list-disc list-inside pl-2 text-sm">{requirement}</li>
+            <li className="list-disc list-inside pl-2 text-sm" key={requirement}>{requirement}</li>
           ))}
         </ul>
       </div>

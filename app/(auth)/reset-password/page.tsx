@@ -3,6 +3,8 @@ import resetPassImg from "../../../public/reset-pass.jpg";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { ResetPasswordForm } from "./_components/ResetPassWordForm";
+import { Suspense } from "react";
+import Loading from "@/components/shared/simple/Loading";
 
 export default function ResetPassword() {
   return (
@@ -18,10 +20,10 @@ export default function ResetPassword() {
             className="mx-auto"
           />
           <h1 className="text-2xl font-bold">Reset Password</h1>
-          <p className="text-sm">
-            Enter a new password for your account.
-          </p>
-          <ResetPasswordForm />
+          <p className="text-sm">Enter a new password for your account.</p>
+          <Suspense fallback={<Loading />}>
+            <ResetPasswordForm />
+          </Suspense>
           <div>
             <Link
               href="/sign-in"

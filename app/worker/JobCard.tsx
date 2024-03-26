@@ -64,11 +64,11 @@ export default function JobCard({ jobPost }: { jobPost: JobPost }) {
           </div>
           <div>
             {jobPost.requirements.map((requirement) => (
-              <div className="flex flex-wrap gap-2 mb-1 justify-center">
-                <span
-                  className="rounded-md p-1 px-2 ml-1 text-xs bg-slate-100 border border-gray-300"
-                  key={requirement}
-                >
+              <div
+                className="flex flex-wrap gap-2 mb-1 justify-center"
+                key={requirement}
+              >
+                <span className="rounded-md p-1 px-2 ml-1 text-xs bg-slate-100 border border-gray-300">
                   {requirement}
                 </span>
               </div>

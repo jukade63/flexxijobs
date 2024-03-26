@@ -75,6 +75,7 @@ export default function Notification() {
           notifications.map((notification) => (
             <li
               onClick={handleUpdateRead.bind(null, notification.id)}
+              key={notification.id}
               className={cn(
                 "text-sm bg-gray-200 text-blue-700 px-5 py-3 hover:bg-gray-100 first:rounded-t-md last:rounded-b-md cursor-pointer",
                 notification.read && "text-gray-400 bg-white"
