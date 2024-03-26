@@ -1,5 +1,5 @@
 import Image from "next/image";
-import image from "../../public/forget-pass.jpg";
+import forgotPassImg from "../../../public/forgot-pass.jpg";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { ForgotPasswordForm } from "./_components/ForgotPassWordForm";
@@ -11,7 +11,7 @@ export default function ForgotPassword() {
       <div className="absolute inset-0 flex items-center justify-center -top-1/6">
         <div className="max-w-xl w-full p-8 bg-white rounded-md shadow-md text-center space-y-4">
           <Image
-            src={image}
+            src={forgotPassImg}
             alt=""
             width={125}
             height={125}
