@@ -15,8 +15,9 @@ export async function createJobPost(data: any){
           body: JSON.stringify(data),
         })
     } catch(error) {
-        console.log(error);
-        throw Error('Failed to create post')
+       return {
+           error: 'Failed to create job post'
+       }
     }
     revalidatePath('/business/job-posts')
 }
@@ -38,7 +39,9 @@ export async function updateJobPost(id: number, data: JobPost) {
     } catch(error) {
         console.log(error);
         
-        throw Error('Failed to update post')
+        return {
+            error: 'Failed to update job post'
+        }
     }
 }
 
@@ -53,7 +56,7 @@ export const getAllJobs = async (page: number, limit: number, location?: string,
     if (category) params.append('category', category);
     if (jobType) params.append('jobType', jobType);
 
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    // await new Promise(resolve => setTimeout(resolve, 1000))
 
     try {
         const res = await fetch(`${BACKEND_URL}/job-posts?${params.toString()}`, { cache: 'no-store' })
@@ -92,6 +95,6 @@ export const getJobPostByIdByBusiness = async (id: number) => {
             Authorization: `Bearer ${session?.accessToken}`
         }
     })
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    // await new Promise(resolve => setTimeout(resolve, 1000))
     return await res.json()
 }

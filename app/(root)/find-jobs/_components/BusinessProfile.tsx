@@ -2,6 +2,7 @@ import { Mail, Phone} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import placeholder from '../../../../public/fallback-img.png'
 
 export default function BusinessProfile({
   profile,
@@ -13,7 +14,7 @@ const {user} = profile
     <div className="space-y-2 p-5 text-center">
       <div className="bg-gray-100 flex justify-center w-[110px] h-[110px] rounded-sm mx-auto ">
         <Image
-          src={user?.imgUrl ?? "/worker-placeholder.png"}
+          src={user?.imgUrl ?? placeholder}
           alt={user?.username || ""}
           width={100}
           height={100}

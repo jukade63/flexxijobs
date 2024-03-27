@@ -14,38 +14,48 @@ export const getFavoutiteJobs = async () => {
 }
 
 export async function addToFavorites(jobId: number) {
-    
+
     const session = await getSession()
     try {
         const res = await fetch(`${BACKEND_URL}/jobs/${jobId}`, {
             method: "PATCH",
-            body: JSON.stringify({isFavorite: true}),
+            body: JSON.stringify({ isFavorite: true }),
             headers: {
                 Authorization: `Bearer ${session?.accessToken}`,
                 "Content-Type": "application/json",
             },
         });
-        if(!res.ok){
-            if(res.status === 403) {
-                throw Error("Only worker user can perform this action");
-            }else if(res.status === 409) {
-                throw Error("You have already added this job to favorites");
-            }else{
-                throw Error("Failed to apply for job");
+        if (!res.ok) {
+            if (res.status === 403) {
+                return {
+                    error: "Only worker user can perform this action",
+                }
+            } else if (res.status === 409) {
+                return {
+                    error: "You have added this job to favorites",
+                }
+            } else {
+                return {
+                    error: "Failed to add to favorites",
+                }
             }
         }
     } catch (error) {
-        if(error instanceof Error) throw Error(error.message);
+        if (error instanceof Error) {
+            return {
+                error: error.message
+            }
+        }
+        revalidatePath("/worker/favorites");
     }
-    revalidatePath("/worker/favorites");
 }
 
 export async function removeFromFavorites(jobId: number) {
-    
+
     const session = await getSession()
     await fetch(`${BACKEND_URL}/jobs/${jobId}`, {
         method: 'PATCH',
-        body: JSON.stringify({isFavorite: false}),
+        body: JSON.stringify({ isFavorite: false }),
         headers: {
             'Authorization': `Bearer ${session?.accessToken}`,
             'Content-Type': 'application/json'

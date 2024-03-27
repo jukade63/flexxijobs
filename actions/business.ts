@@ -28,8 +28,12 @@ export const updateBusiness = async (id:number, field:string,  data: any) => {
     revalidatePath("/business/settings")
     if(!res.ok) {
         const error = await res.json()
-        throw new Error(error.message)
+        return {
+            error: error.message
+        }
     }
 
-    return await res.json()
+    return {
+        message: "Business details updated successfully"
+    }
 }

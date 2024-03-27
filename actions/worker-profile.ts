@@ -12,23 +12,29 @@ type ProfileData = {
 }
 export const getProfileData = async (section: string) => {
     const session = await getSession();
-    if(!session) throw new Error("Unauthorized")
+    if(!session){
+        return {
+            error: "Unauthorized"
+        }
+    }
     
     const res = await fetch(`${BACKEND_URL}/${section}/${session?.user?.id}`, {
         headers: {
             Authorization: `Bearer ${session?.accessToken}`
         }
     })
-    const data = await res.json()
-    if(!res.ok) throw new Error(data.message)
-    console.log(res.status);
-    
-    return data
+    return await res.json()
+   
 }
 
 export const addProfileData = async ({section, values}: ProfileData) => {
 
     const session = await getSession();
+    if(!session){
+        return {
+            error: "Unauthorized"
+        }
+    }
     const res = await fetch(`${BACKEND_URL}/${section}`, {
         method: "POST",
         headers: {
@@ -38,7 +44,11 @@ export const addProfileData = async ({section, values}: ProfileData) => {
         body: JSON.stringify({...values, userId: session?.user?.id})
     })
     const  data = await res.json()
-    if(!res.ok) throw new Error(data.message)
+    if(!res.ok) {
+        return {
+            error: data.message
+        }
+    }
     revalidatePath("/worker/profile")
     return data
 }
@@ -54,7 +64,11 @@ export const updateProfileData = async ({section, values}: ProfileData) => {
         body: JSON.stringify(values)
     })
     const data =  await res.json()
-    if(!res.ok) throw new Error(data.message)
+    if(!res.ok){
+        return {
+            error: data.message
+        }
+    }
     revalidatePath("/worker/profile")
     return data
 }
@@ -69,7 +83,11 @@ export const deleteProfileData = async ({ section, id, }: { section: string, id:
           },
         });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.message);
+        if (!res.ok){
+            return {
+                error: data.message
+            }
+        }
         revalidatePath("/worker/profile")
         return data
 }
@@ -84,7 +102,11 @@ export const getAllProfileData = async () => {
         }
     })
     const data = await res.json()
-    if(!res.ok) throw new Error(data.message)
+    if(!res.ok){
+        return {
+            error: data.message
+        }
+    }
     
     return data
 }

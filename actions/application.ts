@@ -2,7 +2,7 @@
 
 import { getSession } from "@/lib/util-fns/get-session"
 import { BACKEND_URL } from "@/lib/constants"
-import { revalidatePath, revalidateTag } from "next/cache"
+import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 
 
@@ -18,12 +18,19 @@ export async function applyJob(jobPostId: number) {
     if (res.ok) {
         redirect("/worker/applied-jobs");
     } else {
-        if(res.status === 403) {
-            throw Error("Please login as a worker to apply for a job");
-        }else if(res.status === 409) {
-            throw Error("You have already applied for this job");
-        }else{
-            throw Error("Failed to apply for job");
+        if (res.status === 403) {
+            return {
+                error: "Only worker user can perform this action",
+            }
+        } else if (res.status === 409) {
+            return {
+                error: "You have already applied for this job",
+            }
+
+        } else {
+            return {
+                error: "Failed to apply for job",
+            }
         }
     }
 }
@@ -38,7 +45,9 @@ export async function cancelApplication(id: number) {
     })
     if (!res.ok) {
         const error = await res.json()
-        throw new Error(error.message)
+        return {
+            error: error.message
+        }
     }
     revalidatePath("/worker/applied-jobs")
 
@@ -59,7 +68,9 @@ async function updateApplicationStatus(applicationId: number, jobPostId: number,
             body: JSON.stringify({ jobPostId, status }),
         });
     } catch (error) {
-        console.log(error);
+        return {
+            error: "Failed to update application status",
+        }
 
     }
     revalidatePath("/business/job-posts");
@@ -78,11 +89,10 @@ export async function rejectApplication(applicationId: number, jobPostId: number
 export const getApplicationsByWorker = async () => {
     const session = await getSession()
     const res = await fetch(`${BACKEND_URL}/applications/worker/all`, {
-        cache: 'no-store',
         headers: {
             Authorization: `Bearer ${session?.accessToken}`
         },
-    }, )
+    },)
     return await res.json()
 }
 

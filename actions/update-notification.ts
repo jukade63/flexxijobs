@@ -6,7 +6,6 @@ import { revalidateTag } from "next/cache";
 
 
 export const updateNotification = async (id: number) => {
-    console.log({id});
     
     const session = await getSession();
     await fetch(`${BACKEND_URL}/notification`, {

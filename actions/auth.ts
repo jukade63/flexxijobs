@@ -4,16 +4,18 @@ import { FormFields } from "@/app/(root)/business/sign-up/_component.ts/SignUpFo
 import { BACKEND_URL } from "@/lib/constants"
 
 export const signUpUser = async (data: FormFields, userType: "worker" | "business") => {
-    const response = await fetch(`${BACKEND_URL}/auth/register`, {
+    const res = await fetch(`${BACKEND_URL}/auth/register`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ ...data, userType }),
     })
-    if (!response.ok) {
-        const error = await response.json()
-        throw new Error(error.message)
+    if (!res.ok) {
+        const error = await res.json()
+        return {
+            error: error.message,
+        }
     }
     return {
         message: "User created successfully, please check your email to activate your account",
@@ -67,8 +69,11 @@ export const resetPassword = async (password: string, token: string | null) => {
         body: JSON.stringify({password, token}),
     });
 
-    if (res.status === 400) {
-        throw Error('Failed to reset password');
+    if (!res.ok) {
+        const error = await res.json();
+        return {
+            error: error.message
+        }
     }
 
 }
