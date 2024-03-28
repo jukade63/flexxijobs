@@ -3,7 +3,7 @@ import Image from "next/image";
 import CategoryCard from "./CatetoryCard";
 import hospitality from '../../public/hospitality.jpg';
 import construction from '../../public/construction.jpg';
-import event from '../../public/event.jpg';
+import event from '../../public/events.jpg';
 import retail from '../../public/retail.jpg';
 import manufacturing from '../../public/manufacturing.jpg';
 import agedCare from '../../public/aged-care.jpg';
