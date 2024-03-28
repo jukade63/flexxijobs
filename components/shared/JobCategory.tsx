@@ -1,12 +1,22 @@
 
 import Image from "next/image";
 import CategoryCard from "./CatetoryCard";
+import hospitality from '../../public/hospitality.jpg';
+import construction from '../../public/construction.jpg';
+import event from '../../public/event.jpg';
+import retail from '../../public/retail.jpg';
+import manufacturing from '../../public/manufacturing.jpg';
+import agedCare from '../../public/aged-care.jpg';
+import customerService from '../../public/customer-service.jpg';
+import agriCulture from '../../public/agriculture.jpg';
+
+
 const jobCategory = [
   {
     title: "Hospitality",
     img: (
       <Image
-        src='/hospitality.jpg'
+        src={hospitality}
         alt="Hospitality"
         className="object-cover w-[150px]"
         width={150}
@@ -20,7 +30,7 @@ const jobCategory = [
     title: "Construction",
     img: (
       <Image
-        src='/construction.jpg'
+        src={construction}
         alt="Construction"
         className="object-cover w-[150px]"
         width={150}
@@ -32,14 +42,14 @@ const jobCategory = [
   },
   {
     title: "Event",
-    img: <Image src='/events.jpg' alt="Event" className="object-cover w-[150px]"  width={150}
+    img: <Image src={event} alt="Event" className="object-cover w-[150px]"  width={150}
     height={150}/>,
     description:
       "Get involved in organizing and coordinating events of all kinds.",
   },
   {
     title: "Retail",
-    img: <Image src='/retail.jpg' alt="Retail" className="object-cover w-[150px]"  width={150}
+    img: <Image src={retail} alt="Retail" className="object-cover w-[150px]"  width={150}
     height={150}/>,
     description:
       "Work in the retail sector, assisting customers and managing store operations.",
@@ -48,7 +58,7 @@ const jobCategory = [
     title: "Manufacturing",
     img: (
       <Image
-        src='/manufacturing.jpg'
+        src={manufacturing}
         alt="Manufacturing"
         className="object-cover w-[150px]"
         width={150}
@@ -62,7 +72,7 @@ const jobCategory = [
     title: "Aged Care",
     img: (
       <Image
-        src='/aged-care.jpg'
+        src={agedCare}
         alt="Aged Care"
         className="object-cover w-[150px]"
         width={150}
@@ -76,7 +86,7 @@ const jobCategory = [
     title: "Customer Service",
     img: (
       <Image
-        src='/customer-service.jpg'
+        src={customerService}
         alt="Customer Service"
         className="object-cover w-[150px]"
         width={150}
@@ -90,7 +100,7 @@ const jobCategory = [
     title: "Agriculture",
     img: (
       <Image
-        src='/agriculture.jpg'
+        src={agriCulture}
         alt="Agriculture"
         className="object-cover w-[150px]"
         width={150}
