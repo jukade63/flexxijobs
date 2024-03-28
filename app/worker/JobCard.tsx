@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Building2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import fallback from "../../public/fallback-img.png";
 
 export default function JobCard({ jobPost }: { jobPost: JobPost }) {
   return (
@@ -21,7 +21,7 @@ export default function JobCard({ jobPost }: { jobPost: JobPost }) {
           <AvatarImage src={jobPost?.business?.user?.imgUrl} sizes="4rem" />
           <AvatarFallback>
             <Image
-              src="/fallback-img.png"
+              src={fallback}
               alt="profile"
               width={100}
               height={100}

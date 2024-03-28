@@ -1,6 +1,5 @@
 import { SignUpForm } from "@/app/(root)/business/sign-up/_component.ts/SignUpForm";
 import { getSession } from "@/lib/util-fns/get-session";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
 

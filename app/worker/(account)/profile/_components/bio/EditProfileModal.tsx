@@ -4,11 +4,9 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import {
@@ -103,7 +101,6 @@ export default function EditProfileModal() {
       reader.onload = () => {
         if (reader.readyState === 2) {
           form.setValue("imgUrl", reader.result as string);
-          console.log(reader.result);
           
         }
       }

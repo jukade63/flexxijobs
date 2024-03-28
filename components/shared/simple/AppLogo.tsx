@@ -1,6 +1,5 @@
 import Image from "next/image";
-import React from "react";
-
+import logo from '../../../public/logo2.png'
 export default function AppLogo({
   width,
   height,
@@ -11,7 +10,7 @@ export default function AppLogo({
   return (
     <div>
       <Image
-        src="/logo2.png"
+        src={logo}
         className="object-cover rounded-full"
         alt="app-logo"
         width={width}

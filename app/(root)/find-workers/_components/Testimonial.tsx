@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import clogo from "../../../../public/clogo.svg"
 
 export default function Testimonials() {
   const [isClient, setIsClient] = React.useState(false)
@@ -70,7 +71,7 @@ export default function Testimonials() {
                 <div className="bg-white">
                   <div className="flex flex-col justify-around p-2 text-center aspect-square">
                     <Image
-                      src="/clogo.svg"
+                      src={clogo}
                       alt="company-logo"
                       width={50}
                       height={50}
