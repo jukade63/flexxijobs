@@ -1,10 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
+import background from '../../public/bg.jpg'
 
 export default function Hero() {
   return (
-    <section className="relative bg-[url('/bg.jpg')] bg-cover bg-center bg-no-repeat -z-20">
+    <section className={`relative bg-[url('${background}')] bg-cover bg-center bg-no-repeat -z-20`}>
       <div className="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/20 sm:bg-gradient-to-r"></div>
 
       <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
