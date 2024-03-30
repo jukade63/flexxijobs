@@ -4,7 +4,7 @@ import JobPageHero from "@/app/(root)/find-jobs/_components/JopPageHero";
 import Pagination from "@/components/shared/simple/Pagination";
 import Skeleton from "@/components/shared/simple/Skeleton";
 import { randomUUID } from "crypto";
-import JobSearch from "@/app/worker/JobSearch";
+import JobSearch from "@/app/(root)/find-jobs/_components/JobSearch";
 
 async function WorkerPage({
   searchParams,

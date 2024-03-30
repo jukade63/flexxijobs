@@ -7,12 +7,12 @@ export default async function ExperienceList() {
   const experiences: Experience[] = await getProfileData("experiences");
 
   return (
-    <ul className="grid gap-4 lg:grid-cols-2">
+    <ul className="grid gap-4 grid-cols-1 lg:grid-cols-2">
       {experiences.length > 0 &&
         experiences.map((exp) => (
           <li
             key={exp.id}
-            className="border rounded-lg py-2 px-4 bg-gray-200 space-y-2  relative"
+            className="border rounded-lg py-2 px-4 bg-gray-200 space-y-2  relative pb-14"
           >
             <div className="font-bold text-lg">{exp.position}</div>
             <p className="font-semibold">Description</p>

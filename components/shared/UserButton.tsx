@@ -45,7 +45,7 @@ export function UserButton() {
           </p>
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent align="end" className="w-48">
         <DropdownMenuGroup>
           {user?.userType === "worker" && <WorkerDropDownItems />}
           {user?.userType === "business" && <BusinessDropDownItems />}

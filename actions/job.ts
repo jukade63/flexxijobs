@@ -28,7 +28,7 @@ export async function addToFavorites(jobId: number) {
         if (!res.ok) {
             if (res.status === 403) {
                 return {
-                    error: "Only worker user can perform this action",
+                    error: "Only registered worker user can perform this action",
                 }
             } else if (res.status === 409) {
                 return {

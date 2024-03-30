@@ -11,7 +11,7 @@ const Skills = () => {
         </span>
         Skills
       </h2>
-      <SkillList />
+        <SkillList />
       <div className="flex justify-center">
         <AddSkill />
       </div>

@@ -17,7 +17,7 @@ const MobileNav = () => {
       <SheetTrigger>
         <Menu />
       </SheetTrigger>
-      <SheetContent className="sheet-content sm:w-64">
+      <SheetContent className="sheet-content">
         <Link href="/" className="flex justify-center">
           <AppLogo width={110} height={80} />
         </Link>

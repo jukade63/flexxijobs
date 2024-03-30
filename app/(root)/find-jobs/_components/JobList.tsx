@@ -1,6 +1,5 @@
 import { getAllJobs } from "@/actions/job-post";
-import JobCard from "@/app/worker/JobCard";
-import { revalidatePath } from "next/cache";
+import JobCard from "@/app/(root)/find-jobs/_components/JobCard";
 
 interface PaginationProps {
   searchParams: { [key: string]: string | undefined };
