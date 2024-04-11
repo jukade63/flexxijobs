@@ -25,7 +25,6 @@ type AddSkillFormProps = {
 };
 
 export function AddSkillForm({ data, isEdit }: AddSkillFormProps) {
-  console.log(data);
   
   const { onClose } = useModal();
   const form = useForm<z.infer<typeof skillSchema>>({

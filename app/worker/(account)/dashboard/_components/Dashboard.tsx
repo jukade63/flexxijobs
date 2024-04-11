@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { CalendarCheck, CircleDollarSign, Clock3, Star } from "lucide-react";
 import {
   Bar,
@@ -9,14 +9,33 @@ import {
   YAxis,
   Tooltip,
   ComposedChart,
-  Line,
 } from "recharts";
+import { getRatingsByWorker } from "@/actions/rating";
+
+interface Rating {
+  value: number;
+  content: string;
+}
 
 interface DashboardProps {
   data: { monthYear: string; earning: number; completed: boolean }[];
 }
 function Dashboard({ data }: DashboardProps) {
-  const monthlyEarningsMap: { [key: string]: number } = {};  
+  const monthlyEarningsMap: { [key: string]: number } = {};
+  const [ratings, setRatings] = React.useState<Rating[]>([]);
+
+  useEffect(() => {
+    const fetchRatings = async () => {
+      try {
+        const result = await getRatingsByWorker();
+        setRatings(result);
+        
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchRatings();
+  }, []);
 
   data.forEach((item) => {
     const monthYearKey = item.monthYear;
@@ -37,8 +56,12 @@ function Dashboard({ data }: DashboardProps) {
 
   const jobCompletionRate =
     (data.map((item) => item.completed).filter(Boolean).length / data.length) *
-    100 || 0;
-  const averageRating = "4.5";
+      100 || 0;
+  const averageRating =
+    ratings.reduce((acc, rating) => {
+      const totalRating = acc + rating.value;
+      return totalRating;
+    }, 0) / ratings.length;
 
   const memoizedTotalEarnings = useMemo(() => {
     const earningsData = Object.values(data).map((item) => item.earning);
@@ -59,7 +82,7 @@ function Dashboard({ data }: DashboardProps) {
     },
     {
       title: "Average Rating",
-      value: averageRating,
+      value: averageRating.toFixed(2),
       icon: <Star color="yellow" size={30} />,
     },
   ];
@@ -93,7 +116,6 @@ function Dashboard({ data }: DashboardProps) {
                 <YAxis fontSize={12} />
                 <Tooltip />
                 <Bar dataKey="earnings" barSize={20} fill="#be123c" />
-                {/* <Line type="monotone" dataKey="earnings" stroke="#facc15" /> */}
               </ComposedChart>
             </div>
           )}

@@ -33,22 +33,24 @@ export default async function BasicInfo() {
             Phone Number : {session?.user?.phoneNumber || ""}
           </div>
         </div>
-        <div className="absolute top-2 right-0">
+        <div className="absolute top-0 right-0">
           <EditProfileButton session={session as Session} />
         </div>
       </div>
 
-      <div className="space-y-2">
-        <Progress value={profileCompleteRate} />
-        <p className="text-white text-sm">
-          {profileCompleteRate.toFixed(0)}% of your profile is complete
-        </p>
-        {profileCompleteRate < 100 && (
-          <p className="text-amber-400 text-sm font-semibold">
-            Complete your profile to apply for jobs
+      {session?.user.userType === "worker" && (
+        <div className="space-y-2">
+          <Progress value={profileCompleteRate} />
+          <p className="text-white text-sm">
+            {profileCompleteRate.toFixed(0)}% of your profile is complete
           </p>
-        )}
-      </div>
+          {profileCompleteRate < 100 && (
+            <p className="text-amber-400 text-sm font-semibold">
+              Complete your profile to apply for jobs
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

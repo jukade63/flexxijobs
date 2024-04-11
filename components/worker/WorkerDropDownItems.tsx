@@ -11,14 +11,12 @@ export default function WorkerDropDownItems() {
           <span>Profile</span>
         </Link>
       </DropdownMenuItem>
-      <DropdownMenuSeparator />
       <DropdownMenuItem>
         <Link href="/worker/dashboard" className="flex items-center">
           <GaugeCircle className="mr-2 h-4 w-4" />
           <span>Dashboard</span>
         </Link>
       </DropdownMenuItem>
-      <DropdownMenuSeparator />
       <DropdownMenuItem>
         <Link href="/worker/applied-jobs" className="flex items-center">
           <ClipboardList className="mr-2 h-4 w-4" />

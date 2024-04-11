@@ -10,6 +10,13 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import clogo from "../../../../public/clogo.svg"
+import John from "../../../../public/Joe.jpg"
+import Emily from "../../../../public/Emily.jpg"
+import Michael from "../../../../public/Michael.jpg"
+import Jane from "../../../../public/Jane.jpg"
+import David from "../../../../public/David.jpg"
+import Sarah from "../../../../public/Sarah.jpg"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Testimonials() {
   const [isClient, setIsClient] = React.useState(false)
@@ -24,36 +31,42 @@ export default function Testimonials() {
       author: "John Doe",
       company: "ABC Corp",
       text: "Flexxi Jobs helped us find the perfect candidates quickly and efficiently. The platform is user-friendly and highly effective.",
+      photo: John
     },
     {
       id: 2,
       author: "Jane Smith",
       company: "XYZ Inc",
       text: "We've been using Flexxi Jobs for our hiring needs and have been extremely satisfied with the quality of candidates we've found.",
+      photo: Jane
     },
     {
       id: 3,
       author: "Michael Johnson",
       company: "123 Solutions",
       text: "Flexxi Jobs's streamlined process and extensive candidate pool have saved us countless hours in our recruitment efforts. Highly recommended!",
+      photo: Michael
     },
     {
       id: 4,
       author: "Emily Brown",
       company: "Tech Innovations",
       text: "Using Flexxi Jobs has been a game-changer for our hiring process. We've found top-notch talent that aligns perfectly with our company culture and values.",
+      photo: Emily
     },
     {
       id: 5,
       author: "David Clark",
       company: "Global Enterprises",
       text: "Flexxi Jobs exceeded our expectations with its intuitive interface and robust features. It's been instrumental in our hiring success.",
+      photo: David
     },
     {
       id: 6,
       author: "Sarah Johnson",
       company: "Future Tech",
       text: "We've tried other platforms before, but Flexxi Jobs stands out for its exceptional candidate quality and customer service.",
+      photo: Sarah
     },
   ];
   return (
@@ -70,14 +83,9 @@ export default function Testimonials() {
               <div className="p-1">
                 <div className="bg-white">
                   <div className="flex flex-col justify-around p-2 text-center aspect-square">
-                    <Image
-                      src={clogo}
-                      alt="company-logo"
-                      width={50}
-                      height={50}
-                      className="mx-auto"
-                    />
-                    <p className=" text-gray-500 p-2">
+
+                   <Image src={testimonial.photo} alt="company logo" width={100} height={100} className="mx-auto rounded-full" />
+                    <p className=" text-gray-500 p-2 text-sm">
                       <span className="inline-block pe-2 [&>svg]:w-5">
                         <div className="w-3">
                           <svg

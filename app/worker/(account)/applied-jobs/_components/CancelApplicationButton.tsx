@@ -1,7 +1,6 @@
 'use client'
 
 import { cancelApplication } from "@/actions/application"
-import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
 
 export default function CancelApplicationButton({applicationId}: {applicationId: number}) {
@@ -22,6 +21,6 @@ export default function CancelApplicationButton({applicationId}: {applicationId:
       }
   }
     return (
-    <Button onClick={handleCancelApplication} variant='destructive'>Cancel Application</Button>
+    <button onClick={handleCancelApplication} className="text-red-600">Cancel Application</button>
   )
 }

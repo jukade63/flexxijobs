@@ -11,7 +11,6 @@ export default function BusinessDropDownItems() {
           <span>My job posts</span>
         </Link>
       </DropdownMenuItem>
-      <DropdownMenuSeparator />
       <DropdownMenuItem>
         <Link href="/business/post-job" className="flex items-center">
           <FilePenLine className="mr-2 h-4 w-4" />
@@ -24,7 +23,6 @@ export default function BusinessDropDownItems() {
           <span>History</span>
         </Link>
       </DropdownMenuItem>
-      <DropdownMenuSeparator />
       <DropdownMenuItem>
         <Link href="/business/settings" className="flex items-center">
           <Settings className="mr-2 h-4 w-4" />

@@ -91,6 +91,14 @@ declare global {
     worker?: Worker;
   }
 
+  interface Rating {
+    id: number;
+    value: number;
+    content: string;
+    workerId?: number;
+    jobId?: number;
+  }
+
   interface INotification {
     id: number;
     message: string;

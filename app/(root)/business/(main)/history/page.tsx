@@ -1,4 +1,5 @@
 import { getJobPostsByBusiness } from "@/actions/job-post";
+import Review from "./_components/Review";
 
 export default async function History() {
   const completedJobs: JobPost[] = await getJobPostsByBusiness();
@@ -9,17 +10,17 @@ export default async function History() {
   return (
     <section className="space-y-2">
       <h1 className="text-xl font-semibold">Completed Jobs</h1>
-      <ul>
+      <ul className="space-y-2">
         {filteredJobs.length > 0 &&
-          filteredJobs.map((job) => (
-            <li key={job.id} className="bg-green-200 p-3">
-              <p>{job.title}</p>
-              <h2 className="font-semibold">Workers</h2>
+          filteredJobs.map((jobPost) => (
+            <li key={jobPost.id} className="bg-white p-3">
+              <h2 className="text-lg font-semibold text-rose-700">{jobPost.title}</h2>
+              {jobPost.applications  && jobPost.applications.length > 0 && <h2 className="font-semibold">Hired Workers</h2>}
               <ul className="pl-4 ">
-                {job.applications?.map((application, index) => (
-                  <li className="list-decimal list-inside flex gap-8 items-center" key={application.id}>
+                {jobPost.applications?.map((application, index) => (
+                  <li className="list-decimal list-inside flex gap-x-8 flex-col md:flex-row " key={application.id}>
                     <p>{index + 1}. {application.worker?.user.username}</p>
-                    <button className="bg-yellow-400 py-1 px-2 text-sm rounded-full">Review worker</button>
+                    <Review workerId={application.worker?.id as number} jobId={jobPost?.job?.id as number}/>
                   </li>
                 ))}
               </ul>

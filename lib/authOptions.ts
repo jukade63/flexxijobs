@@ -36,6 +36,8 @@ export const authOptions: NextAuthOptions = {
             if(!credentials?.email || !credentials?.password) {
               throw new Error('Invalid credentials');
             }
+            console.log(BACKEND_URL);
+            
             const resp = await fetch(BACKEND_URL + "/auth/login", {
               method: "POST",
               headers: {

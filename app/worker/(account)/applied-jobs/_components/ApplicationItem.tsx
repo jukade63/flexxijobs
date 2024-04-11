@@ -1,9 +1,13 @@
 import { formatDateTimeRange } from "@/lib/util-fns/format-datetime";
-import { format, formatDistance, formatDistanceToNow } from "date-fns";
-import { Calendar, MapPin } from "lucide-react";
-import React from "react";
-import { Button } from "react-day-picker";
+import { formatDistance, formatDistanceToNow } from "date-fns";
+import { Calendar, CircleEllipsis, MapPin } from "lucide-react";
 import CancelApplicationButton from "./CancelApplicationButton";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function ApplicationItem({
   application,
@@ -33,11 +37,16 @@ export default function ApplicationItem({
               })}
             </span>
           </p>
-          <p
-            className={`text-sm rounded-full py-1 px-4 font-semibold text-gray-50 ${statusColor}`}
-          >
-            {application.status}
-          </p>
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <CircleEllipsis />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>
+                <CancelApplicationButton applicationId={application.id} />
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         <h2 className="text-lg font-semibold text-center">
           Job Position : {jobPost.title}
@@ -63,19 +72,24 @@ export default function ApplicationItem({
         <div className="space-y-1 py-2 bg-gray-200 w-full px-2">
           <h3 className="text-md font-semibold">Posted By:</h3>
           <div className="flex gap-4 items-center">
-            <p className="text-sm font-semibold">{business?.user?.username}</p>
-            <p className="text-xs ">email : {business?.user?.email}</p>
-            <p className="text-xs ">phone : {business?.user?.phoneNumber}</p>
+            <ul>
+              <p className="text-sm font-semibold">
+                {business?.user?.username}
+              </p>
+              <li className="text-xs ">email : {business?.user?.email}</li>
+              <li className="text-xs ">
+                phone : {business?.user?.phoneNumber}
+              </li>
+            </ul>
           </div>
         </div>
         <div className="absolute bottom-2 right-2">
-          <CancelApplicationButton applicationId={application.id} />
+          <p
+            className={`text-sm rounded-full py-1 px-4 font-semibold text-gray-50 ${statusColor}`}
+          >
+            {application.status}
+          </p>
         </div>
-        {/* {isInFavorites && (
-          <form action={removeFromFavorites.bind(null, application?.jobPost?.job?.id?.toString())}>
-            <Button type="submit">Remove from Favorites</Button>
-          </form>
-        )} */}
       </div>
     </div>
   );

@@ -12,8 +12,7 @@ async function WorkerPage({
   searchParams: { [key: string]: string | undefined };
 }) {
   return (
-    <section key={randomUUID()}>
-      <JobPageHero />
+    <section key={randomUUID()} className="px-3 md:px-0">
       <JobSearch />
       <div className="flex justify-center">
         <Pagination searchParams={searchParams} />
